@@ -1,7 +1,7 @@
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
-        unordered_map<int, int> seen;   // value -> count of unmatched copies
+        unordered_map<int, int> seen;
         int result = 0;
         for (int num : nums) {
             int check = k - num;
