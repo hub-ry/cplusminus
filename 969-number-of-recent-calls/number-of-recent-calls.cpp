@@ -11,7 +11,7 @@ public:
         while (t - q.front() > 3000) {
             q.pop();
         }
-        return q.size();
+        return static_cast<int>(q.size());
     }
 };
 
