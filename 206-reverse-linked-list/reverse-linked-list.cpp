@@ -17,20 +17,14 @@ public:
 
         ListNode* zero = NULL;
         ListNode* one = head;
-        ListNode* two = head->next;
-        ListNode* three = head->next;
 
-        while (two) {
-          three = two->next;
-          two->next = one;
-          one->next = zero;
-          zero = one;
-          one = two;
-          two = three;
+        while (one) {
+            ListNode* two = one->next;
+            one->next = zero;
+            zero = one;
+            one = two;
         }
 
-        head = one;
-
-        return head;
+        return zero;
     }
 };
