@@ -14,10 +14,10 @@ public:
         // find the middle node
 
         if (!head) {
-            return NULL;
+            return nullptr;
         }
         if (!head->next) {
-            return NULL;
+            return nullptr;
         }
         ListNode* temp = head;
 
