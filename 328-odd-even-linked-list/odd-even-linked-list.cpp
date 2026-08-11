@@ -11,10 +11,13 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
-        if (!head || !head->next) return head;
+        if (!head || !head->next) {
+            return head;
+        }
+
         ListNode* odd = head;
         ListNode* even = head->next;
-        ListNode* bridge = head->next;
+        ListNode* connect = even;
 
 
         while (even && even->next) {
@@ -24,8 +27,11 @@ public:
             even = even->next;
         }
 
-        odd->next = bridge;
-        
+
+
+
+        odd->next = connect;
         return head;
+
     }
 };
