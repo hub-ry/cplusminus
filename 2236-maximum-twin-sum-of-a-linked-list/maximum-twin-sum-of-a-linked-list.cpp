@@ -11,44 +11,40 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-
-        // get end node and half node
-
-        ListNode* slow = head;
-        ListNode* fast = head;
-
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
+        
+        if (!head || !head->next) {
+            return -1;
         }
 
         
-        // now slow holds the middle and fast hold the end
 
+        // find the middle node (it will be even)
+        ListNode* slow = head;
+        ListNode* fast = head->next;
 
-        //reverse the 2nd half of the linkedlist
-        ListNode* prev = NULL;
+        vector<int> x; 
+        while (fast && fast->next) {
+            x.push_back(slow->val);
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        x.push_back(slow->val);
+
+        // now slow hold the middle, we should also sum slow as we go
+        // x holds the list up until the middle
+
+        slow = slow->next;
+        int k = x.size() - 1;
+        int big = INT_MIN;
         while (slow) {
-            ListNode* next = slow->next;
-            slow->next = prev;
-            prev = slow;
-            slow = next;
-        }
-
-        // prev holds the head of the 2nd list;
-
-        int max = 0;
-        while (prev) {
-            int curr = prev->val + head->val;
-            if (curr > max) {
-                max = curr;
+            x[k] += slow->val;
+            if (x[k] > big) {
+                big = x[k];
             }
-            prev = prev->next;
-            head = head->next;
+            k--;
+
+            slow = slow->next;
         }
-
-    return max;
-
-  
+        return big;
     }
 };
