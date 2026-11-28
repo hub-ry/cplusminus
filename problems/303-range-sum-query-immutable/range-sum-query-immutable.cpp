@@ -1,15 +1,16 @@
 class NumArray {
 private:
-    std::vector<int> psum{0};
+    std::vector<int> psum;
 public:
     NumArray(vector<int>& nums) {
+        psum.push_back(0);
         for (int num : nums) {
             psum.push_back(psum.back() + num);
         }
     }
     
     int sumRange(int left, int right) {
-        return psum[right + 1] - psum[left];;
+        return psum[right + 1] - psum[left];
     }
 };
 
